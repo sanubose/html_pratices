@@ -1,8 +1,6 @@
-Bilkul 👍 Ab jo **actual folder structure** tumne diya hai, uske according README banana chahiye. Isme HTML, CSS, JavaScript aur Node.js sab clearly organized hain. Ye version GitHub par professional lagega aur tumhari learning journey bhi clearly show karega.
 
-Purani `README.md` ko replace karke ye paste karo:
 
-````markdown
+
 # 🚀 Web Development Learning Repository
 
 A structured collection of my **HTML, CSS, JavaScript, and Node.js** learning exercises, practice programs, assignments, and small projects.
