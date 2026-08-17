@@ -1,0 +1,49 @@
+p{
+    /* font-style: italic;
+    font-size: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: lighter;
+    line-height: 20px;
+    word-spacing: 30px; */
+   font-family: "Saira Stencil", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 800;;
+  font-style: normal;
+  font-variation-settings:
+    "wdth" 100;
+}
+
+#box1{
+    height: 100px;
+    width: 100px;
+  background-color: red;
+    text-align: center;
+}
+#box2{
+    height: 100px;
+    width: 100px;
+  background-color:rgb(116, 172, 147);
+    text-align:center;
+}
+#box3{
+    height: 100px;
+    width: 100px;
+  background-color: #5b9fe1     ;
+    text-align: center;
+}
+#box4{
+    height: 100px;
+    width: 100px;
+  background-color:hsl(275, 22%, 72%);
+    text-align: center;
+}
+
+#box5{
+    
+    height: 100px;
+    width: 100px;
+
+    background: linear-gradient(180deg, #33ccff, #00ff99);
+border-radius: 10px;
+    text-align: center;
+}

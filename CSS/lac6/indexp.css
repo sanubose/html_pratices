@@ -1,0 +1,64 @@
+*{
+    box-sizing: border-box;
+}
+
+
+.box{
+    border: 2px solid red;
+    background-color: bisque;
+    height: 1000px;
+}
+
+
+
+
+.container{
+    height: 150px;
+    width: 150px;
+    border: 2px solid black;
+    margin: 5px;
+    display: inline-block;
+    overflow:scroll;
+}
+#dabba1{
+    /* overflow: hidden;
+    overflow: scroll; */
+    overflow: auto;
+
+}
+#dabba2{
+    /* position: relative;
+    left: 200px;
+    top: 300px; */
+}
+#dabba3{
+    /* left:600px;
+    top:200px;
+    position: absolute;
+    bottom: 100px; */
+    /* position: fixed; */
+    
+}
+#dabba4{
+top:300px;
+position: fixed;
+
+
+}
+
+img{
+    height: 140px;
+    width: 140px;
+    margin: 5px;
+}
+
+video{
+    height: 140px;
+    width: 140px;
+    margin: 5px;
+}
+iframe{
+     height: 140px;
+    width: 140px;
+    margin: 5px;
+}

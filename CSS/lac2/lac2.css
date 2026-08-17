@@ -1,0 +1,64 @@
+/* #heading{
+    background-color: aqua;
+
+}
+.sample{
+    border: solid 2px red;
+    background-color: bisque;
+    text-align: center;
+} */
+
+/* p{
+    color: rgb(0, 177, 62);
+} */
+
+section p{
+    color: brown;
+}
+article p{
+   color: darkblue;
+}
+.container span {
+    background-color: aqua;
+}
+
+.container p {
+    background-color: rgb(0, 132, 255);
+}
+
+ul>li{
+ color: blue;
+ border: solid 2px crimson;
+}
+
+ol>li{
+ color: rgb(0, 255, 213);
+ border: solid 2px rgb(220, 217, 20);
+}
+h2+p{
+    border: solid 3px red;
+    background-color: cornflowerblue;
+}
+
+/* descendent */
+.box p{
+   background-color: crimson;
+   border: solid 3px teal;
+}
+
+/* direct chlid */
+.box>p{
+   background-color: rgb(20, 220, 190);
+   border: solid 3px rgb(36, 0, 128);
+}
+
+p+p{
+    color: red
+}
+
+.h2~.p{
+    background-color: darkgrey;
+    color: rgb(140, 255, 0);
+    border: solid 2px blue;
+    border-radius: 2px;
+}

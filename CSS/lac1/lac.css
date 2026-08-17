@@ -1,0 +1,24 @@
+/* p{
+    background-color: cadetblue;
+}
+div{
+    text-decoration: dotted;
+    text-shadow: 0cm;
+    background-color: cadetblue;
+
+} */
+
+*{
+    background-color: palevioletred;
+}
+ h1{
+    background-color: aqua;
+ }
+ #heading{
+    background-color: bisque;
+ }
+
+ .para{
+    background-color: brown;
+    color: azure;
+ }
