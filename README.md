@@ -510,6 +510,3 @@ If you find this repository useful, feel free to give it a ⭐ **Star**.
 This repository is created primarily for learning, practice, and educational purposes.
 
 ```
-
-**Ek correction:** tumhare actual folder names mein `StringBiginear`, `anonymus`, `airthmatic`, `condtion`, `quardnatic` jaise names hain. README mein maine **exact names** preserve kiye hain, taaki GitHub par documentation aur actual folders mismatch na kare. 👍
-```
