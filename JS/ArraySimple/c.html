@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cyber-Diamond Clock</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+
+        :root {
+            --hour-glow: #00f2ff;
+            --min-glow: #ffcc00;
+            --sec-glow: #ff007b;
+            --panel-bg: rgba(10, 15, 25, 0.8);
+        }
+
+        body {
+            background-color: #05080a;
+            background-image: 
+                radial-gradient(circle at 50% 50%, #102030 0%, #05080a 100%),
+                linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%),
+                linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+            background-size: 100% 100%, 100% 4px, 3px 100%;
+            color: white;
+            font-family: 'Orbitron', sans-serif;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        .main-container {
+            display: flex;
+            gap: 20px;
+            padding: 40px;
+            border: 2px solid rgba(0, 242, 255, 0.1);
+            border-radius: 30px;
+            background: var(--panel-bg);
+            box-shadow: 0 0 50px rgba(0, 0, 0, 1), inset 0 0 20px rgba(0, 242, 255, 0.05);
+            position: relative;
+        }
+
+        /* Futuristic Box Decoration */
+        .box {
+            position: relative;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 15px;
+            width: 250px;
+            height: 420px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            clip-path: polygon(15% 0, 85% 0, 100% 10%, 100% 90%, 85% 100%, 15% 100%, 0 90%, 0 10%);
+        }
+
+        .box::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; height: 2px;
+            background: linear-gradient(90deg, transparent, var(--hour-glow), transparent);
+        }
+
+        #box-m::before { background: linear-gradient(90deg, transparent, var(--min-glow), transparent); }
+        #box-s::before { background: linear-gradient(90deg, transparent, var(--sec-glow), transparent); }
+
+        h2 {
+            font-size: 12px;
+            letter-spacing: 4px;
+            margin-top: 15px;
+            opacity: 0.8;
+            text-shadow: 0 0 10px currentColor;
+        }
+
+        /* Object Grids */
+        .grid {
+            display: grid;
+            gap: 8px;
+            margin-top: 20px;
+        }
+
+        #hour-grid { grid-template-columns: repeat(4, 1fr); }
+        #min-grid, #sec-grid { grid-template-columns: repeat(6, 1fr); }
+
+        /* Diamond Styles */
+        .diamond {
+            width: 18px;
+            height: 18px;
+            background: rgba(255,255,255,0.05);
+            transform: rotate(45deg);
+            border: 1px solid rgba(0, 242, 255, 0.1);
+            transition: 0.4s;
+        }
+        .diamond.active {
+            background: var(--hour-glow);
+            box-shadow: 0 0 15px var(--hour-glow);
+            border-color: #fff;
+        }
+
+        /* Coin Styles */
+        .coin {
+            width: 16px;
+            height: 16px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 50%;
+            border: 1px solid rgba(255, 204, 0, 0.1);
+            transition: 0.4s;
+        }
+        .coin.active {
+            background: radial-gradient(circle, #fff, var(--min-glow));
+            box-shadow: 0 0 12px var(--min-glow);
+            animation: coinSpin 2s infinite linear;
+        }
+
+        /* Dot Styles */
+        .dot {
+            width: 10px;
+            height: 10px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 2px;
+            transition: 0.2s;
+        }
+        .dot.active {
+            background: var(--sec-glow);
+            box-shadow: 0 0 10px var(--sec-glow);
+            transform: scale(1.1);
+        }
+
+        @keyframes coinSpin {
+            0% { transform: rotateY(0deg); }
+            100% { transform: rotateY(360deg); }
+        }
+
+        .digital {
+            position: absolute;
+            bottom: 30px;
+            font-size: 20px;
+            font-weight: bold;
+            opacity: 0.9;
+        }
+
+        /* Energy Particle */
+        .energy-trail {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            z-index: 1000;
+            pointer-events: none;
+            filter: blur(2px);
+        }
+
+        @media (max-width: 850px) {
+            .main-container { flex-direction: column; scale: 0.8; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="main-container">
+        <div class="box" id="box-h">
+            <h2 style="color: var(--hour-glow)">Core Hours</h2>
+            <div id="hour-grid" class="grid"></div>
+            <div class="digital" id="d-h" style="color: var(--hour-glow)">00</div>
+        </div>
+
+        <div class="box" id="box-m">
+            <h2 style="color: var(--min-glow)">Data Minutes</h2>
+            <div id="min-grid" class="grid"></div>
+            <div class="digital" id="d-m" style="color: var(--min-glow)">00</div>
+        </div>
+
+        <div class="box" id="box-s">
+            <h2 style="color: var(--sec-glow)">Flux Seconds</h2>
+            <div id="sec-grid" class="grid"></div>
+            <div class="digital" id="d-s" style="color: var(--sec-glow)">00</div>
+        </div>
+    </div>
+
+    <script>
+        const grids = {
+            h: document.getElementById('hour-grid'),
+            m: document.getElementById('min-grid'),
+            s: document.getElementById('sec-grid')
+        };
+
+        let lastH, lastM;
+
+        function createGrids() {
+            for (let i = 0; i < 24; i++) {
+                let d = document.createElement('div');
+                d.className = 'diamond';
+                grids.h.appendChild(d);
+            }
+            for (let i = 0; i < 60; i++) {
+                let c = document.createElement('div');
+                c.className = 'coin';
+                grids.m.appendChild(c);
+            }
+            for (let i = 0; i < 60; i++) {
+                let s = document.createElement('div');
+                s.className = 'dot';
+                grids.s.appendChild(s);
+            }
+        }
+
+        function spawnTrail(startId, endId, color) {
+            const start = document.getElementById(startId).getBoundingClientRect();
+            const end = document.getElementById(endId).getBoundingClientRect();
+            
+            const trail = document.createElement('div');
+            trail.className = 'energy-trail';
+            trail.style.backgroundColor = color;
+            trail.style.boxShadow = `0 0 20px 5px ${color}`;
+            trail.style.left = (start.left + start.width / 2) + 'px';
+            trail.style.top = (start.top + start.height / 2) + 'px';
+            document.body.appendChild(trail);
+
+            const animation = trail.animate([
+                { left: trail.style.left, top: trail.style.top, opacity: 1 },
+                { left: (end.left + end.width / 2) + 'px', top: (end.top + end.height / 2) + 'px', opacity: 0 }
+            ], {
+                duration: 1000,
+                easing: 'cubic-bezier(0.4, 0, 0.2, 1)'
+            });
+
+            animation.onfinish = () => trail.remove();
+        }
+
+        function update() {
+            const now = new Date();
+            const h = now.getHours();
+            const m = now.getMinutes();
+            const s = now.getSeconds();
+
+            // Logic to update UI classes
+            const updateItems = (selector, count) => {
+                document.querySelectorAll(selector).forEach((el, i) => {
+                    i < count ? el.classList.add('active') : el.classList.remove('active');
+                });
+            };
+
+            updateItems('.diamond', h);
+            updateItems('.coin', m);
+            updateItems('.dot', s);
+
+            // Digital Text
+            document.getElementById('d-h').innerText = h.toString().padStart(2, '0');
+            document.getElementById('d-m').innerText = m.toString().padStart(2, '0');
+            document.getElementById('d-s').innerText = s.toString().padStart(2, '0');
+
+            // Energy Transfer Animation
+            if (lastM !== undefined && m !== lastM) {
+                spawnTrail('box-m', 'box-s', '#ffcc00');
+            }
+            if (lastH !== undefined && h !== lastH) {
+                spawnTrail('box-h', 'box-m', '#00f2ff');
+            }
+
+            lastH = h;
+            lastM = m;
+        }
+
+        createGrids();
+        setInterval(update, 1000);
+        update();
+    </script>
+</body>
+</html>
